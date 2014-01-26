@@ -20,4 +20,5 @@ function mult35(num) {
 }
 
 console.log(mult35(10));
+console.log(mult35(100));
 console.log(mult35(1000));
