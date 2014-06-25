@@ -1,23 +1,32 @@
-function mult35(num) {
-    function sum(array){
+var mult3and5sum = function (num) {
+    var sum = function (arr, condition){
         var ans = 0;
-        for (var i = 0, len = array.length; i < len; i++){
-            ans += array[i];
+        for (var i = 0, len = arr.length; i < len; i++){
+            if (condition(arr[i])) {
+                ans += arr[i];                
+            }
         }
-
         return ans;
     }
 
-    var multiples =[];
-    for (var j = 1; j < num; j++){
-        if ((j % 3 == 0) || (j % 5 == 0)){
-            multiples.push(j);
-        }
+    var checkDivisibility = function (numToCheck, factor) {
+        return numToCheck % factor === 0;
     }
 
-    return sum(multiples);
+    var checkDiv3or5 = function (numToCheck) {
+        return checkDivisibility(numToCheck, 3) || checkDivisibility(numToCheck, 5);
+    }
+
+    var range = function (num) {
+        var result = [];
+        for (var i = 0; i < num; i++) {
+            result.push(i);
+        }
+        return result;
+    }
+
+    return sum(range(num), checkDiv3or5);
 
 }
 
-console.log(mult35(10));
-console.log(mult35(1000));
+// console.log(mult35(1000));
